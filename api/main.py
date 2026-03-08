@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 
+
+
 import os
 
 from dotenv import load_dotenv
@@ -18,11 +20,7 @@ from backend.routes.trainings import router as trainings_router
 
 load_dotenv()
 
-app = FastAPI(
-    title="Project Colossal API",
-    version="0.1.0",
-    description="APIs for onboarding informal businesses, transaction trace capture, credit scoring, tokenomics, and micro-loans.",
-)
+app = FastAPI()
 
 origins = [
     os.getenv("COLOSSAL_FRONTEND_ORIGIN", "http://localhost:8501"),
@@ -54,6 +52,8 @@ app.include_router(businesses_router)
 app.include_router(transactions_router)
 app.include_router(loans_router)
 app.include_router(trainings_router)
+
+
 
 
 
