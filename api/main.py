@@ -1,26 +1,24 @@
-from __future__ import annotations 
-
-from fastapi import FastAPI
-
-
-
-import os
-
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
+from dotenv import load_dotenv
 
-from backend.db import init_db
-from backend.routes.businesses import router as businesses_router
-from backend.routes.health import router as health_router
-from backend.routes.loans import router as loans_router
-from backend.routes.transactions import router as transactions_router
-from backend.routes.trainings import router as trainings_router
+from api.db import init_db
+from api.routes.businesses import router as businesses_router
+from api.routes.health import router as health_router
+from api.routes.loans import router as loans_router
+from api.routes.transactions import router as transactions_router
+from api.routes.trainings import router as trainings_router
 
+from mangum import Mangum  # serverless adapter
 
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(
+    title="Project Colossal API",
+    version="0.1.0",
+    description="APIs for onboarding informal businesses, transaction trace capture, credit scoring, tokenomics, and micro-loans.",
+)
 
 origins = [
     os.getenv("COLOSSAL_FRONTEND_ORIGIN", "http://localhost:8501"),
@@ -53,12 +51,5 @@ app.include_router(transactions_router)
 app.include_router(loans_router)
 app.include_router(trainings_router)
 
-
-
-
-
-# # 2) Run backend on the port the frontend expects (8001)
-# python -m uvicorn backend.main:app --host 127.0.0.1 --port 8001 --reload
-
-# # 3) In another terminal, run the frontend
-# python -m streamlit run frontend/app.py --server.port 8501
+# This is the key line for serverless on Vercel
+handler = Mangum(app)
