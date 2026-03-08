@@ -1,0 +1,7 @@
+ts,type,amount,currency,channel,reference,counterparty
+2026-01-12T10:15:00,merchant_payment,120.50,ZWL,EcoCash,INV-0001,Wholesale Supplier A
+2026-01-12T16:20:00,airtime,15.00,ZWL,EcoCash,AT-4431,Econet
+2026-01-14T09:05:00,p2p_in,300.00,ZWL,EcoCash,RCV-2281,Customer Payment
+2026-01-18T18:45:00,data,20.00,ZWL,EcoCash,DT-8832,Econet
+2026-01-22T11:30:00,merchant_payment,95.00,ZWL,Steward,POS-1019,Local Distributor
+2026-01-27T13:10:00,p2p_out,60.00,ZWL,EcoCash,SUP-3302,Delivery Rider

@@ -1,0 +1,2 @@
+"""Project Colossal frontend package."""
+

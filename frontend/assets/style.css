@@ -1,0 +1,609 @@
+/* ========== Project Colossal – Beautified Theme ========== */
+:root {
+  /* Base */
+  --pc-bg: #0a0e1a;
+  --pc-surface: rgba(255, 255, 255, 0.06);
+  --pc-surface-2: rgba(255, 255, 255, 0.10);
+  --pc-border: rgba(255, 255, 255, 0.12);
+  --pc-text: rgba(255, 255, 255, 0.95);
+  --pc-muted: rgba(255, 255, 255, 0.72);
+  --pc-faint: rgba(255, 255, 255, 0.52);
+
+  /* Brand colors */
+  --pc-blue: #3b82f6;
+  --pc-blue-light: #60a5fa;
+  --pc-blue-glow: rgba(59, 130, 246, 0.4);
+  --pc-blue-label: #60a5fa; /* A slightly lighter blue for better readability on dark */
+  --pc-pink: #ec4899;
+  --pc-pink-light: #f472b6;
+  --pc-pink-glow: rgba(236, 72, 153, 0.35);
+  --pc-green: #10b981;
+  --pc-green-light: #34d399;
+  --pc-green-glow: rgba(16, 185, 129, 0.35);
+  --pc-purple: #8b5cf6;
+  --pc-amber: #f59e0b;
+
+  /* Semantic */
+  --pc-good: #10b981;
+  --pc-warn: #f59e0b;
+  --pc-bad: #ef4444;
+  --pc-accent: var(--pc-blue);
+
+  /* Transitions */
+  --pc-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --pc-transition: 0.25s var(--pc-ease);
+}
+
+/* ----- App background ----- */
+header[data-testid="stHeader"] {
+  background: transparent !important;
+}
+
+section.main > div {
+  padding-top: 0.8rem;
+}
+
+.stApp {
+  background:
+    radial-gradient(1400px 800px at 15% 0%, var(--pc-blue-glow), transparent 50%),
+    radial-gradient(1000px 600px at 90% 10%, var(--pc-pink-glow), transparent 45%),
+    radial-gradient(800px 500px at 50% 80%, var(--pc-green-glow), transparent 40%),
+    var(--pc-bg);
+  color: var(--pc-text);
+}
+
+/* ========== Header (full-width bar so Project Colossal is seen clearly) ========== */
+.pc-header-wrap {
+  width: 100%;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.97) 50%, rgba(15, 23, 42, 0.98) 100%);
+  border-bottom: 1px solid var(--pc-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 12px 12px;
+}
+.pc-header-inner {
+  width: 100%;
+  padding: 0.85rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+.pc-header {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.pc-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-shadow: 0 0 24px rgba(59, 130, 246, 0.4);
+  margin-bottom: 0.35rem;
+}
+.pc-motto {
+  color: var(--pc-blue-light);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  opacity: 0;
+  animation: pc-motto-fade 1.2s ease-out 0.3s forwards;
+}
+@keyframes pc-motto-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.pc-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 100%;
+  color: var(--pc-muted);
+  font-size: 0.85rem;
+}
+
+/* ========== Sidebar Styling ========== */
+section[data-testid="stSidebar"] {
+  background-color: #050810 !important;
+  border-right: 1px solid var(--pc-border);
+}
+
+section[data-testid="stSidebar"] > div {
+  padding-top: 1rem;
+}
+
+/* Sidebar headings */
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+  color: var(--pc-blue-light) !important;
+  font-weight: 700 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Radio nav items = navigation buttons (blue text, green on hover) */
+section[data-testid="stSidebar"] [data-testid="stRadio"] > div {
+  gap: 0.35rem;
+}
+
+section[data-testid="stSidebar"] [data-testid="stRadio"] label {
+  padding: 0.6rem 0.85rem !important;
+  border-radius: 12px !important;
+  border: 1px solid transparent !important;
+  transition: background-color var(--pc-transition), border-color var(--pc-transition), box-shadow var(--pc-transition), color var(--pc-transition) !important;
+  cursor: pointer !important;
+  margin-bottom: 2px !important;
+  color: #60a5fa !important;
+  font-weight: 600 !important;
+}
+
+/* Force blue on all text inside nav labels (Streamlit wraps text in p/span/div) */
+section[data-testid="stSidebar"] [data-testid="stRadio"] label,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label p,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label span,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label div,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label *,
+section[data-testid="stSidebar"] .stRadio label,
+section[data-testid="stSidebar"] .stRadio label p,
+section[data-testid="stSidebar"] .stRadio label span,
+section[data-testid="stSidebar"] .stRadio label div,
+section[data-testid="stSidebar"] .stRadio label * {
+  color: #60a5fa !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25);
+}
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:hover p,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:hover span,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:hover div,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:hover * {
+  color: #34d399 !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(139, 92, 246, 0.2) 100%) !important;
+  border-color: var(--pc-blue) !important;
+  box-shadow: 0 0 0 1px var(--pc-blue), 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) p,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) span,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) div,
+section[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) * {
+  color: #60a5fa !important;
+}
+
+/* Selectbox in sidebar */
+section[data-testid="stSidebar"] [data-baseweb="select"] > div {
+  border-radius: 10px !important;
+  transition: border-color var(--pc-transition), box-shadow var(--pc-transition) !important;
+}
+section[data-testid="stSidebar"] [data-baseweb="select"] > div:hover {
+  border-color: var(--pc-green) !important;
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3);
+}
+
+/* Divider in sidebar */
+section[data-testid="stSidebar"] hr {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  margin: 1rem 0 !important;
+}
+
+.pc-nav-title {
+  color: var(--pc-blue-light);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 1.5rem 0 0.8rem 0;
+  padding-left: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Caption / tip text */
+section[data-testid="stSidebar"] .stCaptionContainer {
+  color: var(--pc-muted) !important;
+  font-size: 0.8rem !important;
+}
+
+/* Bold blue tip under navigation */
+.pc-sidebar-tip {
+  color: var(--pc-blue-light) !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+.pc-sidebar-tip strong {
+  color: var(--pc-blue) !important;
+}
+
+/* Glassmorphism for forms and cards */
+[data-testid="stForm"], .pc-info-card, .pc-kpi {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ========== KPI cards with hovers & colors ========== */
+.pc-kpi {
+  transition: transform var(--pc-transition), box-shadow var(--pc-transition), border-color var(--pc-transition);
+}
+
+.pc-kpi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+/* Make KPIs pop more */
+.pc-kpi-value {
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(to bottom, #ffffff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.2rem 0;
+}
+.pc-kpi-label {
+  color: var(--pc-blue-label) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.pc-kpi-hint {
+  color: var(--pc-faint);
+  font-size: 0.82rem;
+  margin-top: 0.15rem;
+}
+
+/* ========== Badges with hover ========== */
+.pc-badge {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--pc-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: transform var(--pc-transition), box-shadow var(--pc-transition);
+  display: inline-block;
+}
+.pc-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pc-badge-good {
+  border-color: rgba(16, 185, 129, 0.5);
+  color: var(--pc-green-light);
+  background: rgba(16, 185, 129, 0.12);
+}
+.pc-badge-warn {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+}
+.pc-badge-bad {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* ========== Form Controls Styling (Labels & Options) ========== */
+/* Target all labels and text that describe input fields */
+[data-testid="stWidgetLabel"] p, 
+.stTextInput label, 
+.stSelectbox label, 
+.stMultiSelect label, 
+.stSlider label, 
+.stCheckbox label, 
+.stDateInput label, 
+.stTimeInput label, 
+.stNumberInput label, 
+.stTextArea label, 
+.stFileUploader label {
+  color: #3b82f6 !important; /* Vivid Blue */
+  font-weight: 800 !important; /* Bold */
+  font-size: 1.1rem !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #3b82f6 !important;
+}
+
+/* Specifically for the asterisk in required fields */
+[data-testid="stWidgetLabel"] p span {
+  color: #ef4444 !important; /* Red asterisk */
+  -webkit-text-fill-color: #ef4444 !important;
+}
+
+/* Ensure placeholder text is visible (e.g., examples) */
+::placeholder {
+  color: rgba(0, 0, 0, 0.6) !important; /* Semi-transparent black for placeholder */
+}
+
+/* Style the text typed into inputs to be black for contrast against white backgrounds */
+input, select, textarea, div[data-baseweb="select"] div {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* ========== Buttons ========== */
+.stButton > button {
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transition: transform var(--pc-transition), box-shadow var(--pc-transition), background-color var(--pc-transition) !important;
+}
+.stButton > button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+}
+.stButton > button:active {
+  transform: translateY(0);
+}
+
+/* Primary button – blue */
+.stButton > button[kind="primary"],
+div[data-testid="stHorizontalBlock"] .stButton > button:first-child button {
+  background: linear-gradient(135deg, var(--pc-blue) 0%, var(--pc-purple) 100%) !important;
+  border: none !important;
+}
+.stButton > button[kind="primary"]:hover {
+  box-shadow: 0 4px 20px var(--pc-blue-glow) !important;
+}
+
+/* ========== Inputs & forms ========== */
+div[data-baseweb="input"] input,
+div[data-baseweb="textarea"] textarea,
+div[data-baseweb="select"] > div {
+  border-radius: 12px !important;
+  transition: border-color var(--pc-transition), box-shadow var(--pc-transition) !important;
+}
+div[data-baseweb="input"] input:focus,
+div[data-baseweb="textarea"] textarea:focus {
+  box-shadow: 0 0 0 2px var(--pc-blue-glow) !important;
+}
+
+/* ========== Expanders ========== */
+.streamlit-expanderHeader {
+  border-radius: 10px !important;
+  transition: background-color var(--pc-transition) !important;
+}
+.streamlit-expanderHeader:hover {
+  background: rgba(59, 130, 246, 0.08) !important;
+}
+
+/* ========== Main content headings ========== */
+.main h1, .main h2, .main h3 {
+  color: var(--pc-text) !important;
+}
+.main h3 {
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.25);
+}
+
+/* ========== Tabs ========== */
+.stTabs [data-baseweb="tab-list"] {
+  gap: 0.5rem;
+}
+.stTabs [data-baseweb="tab"] {
+  border-radius: 10px !important;
+  padding: 0.5rem 1rem !important;
+  transition: background-color var(--pc-transition), color var(--pc-transition) !important;
+}
+.stTabs [data-baseweb="tab"]:hover {
+  background: rgba(236, 72, 153, 0.12) !important;
+  color: var(--pc-pink-light) !important;
+}
+.stTabs [aria-selected="true"] {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(236, 72, 153, 0.15) 100%) !important;
+  color: var(--pc-blue-light) !important;
+}
+
+/* ========== Dataframes / tables ========== */
+.dataframe {
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== Success / error / info boxes ========== */
+[data-testid="stAlert"] {
+  border-radius: 12px !important;
+  border-left: 4px solid !important;
+}
+[data-testid="stAlert"] [data-baseweb="notification"][kind="positive"] {
+  border-left-color: var(--pc-green) !important;
+}
+[data-testid="stAlert"] [data-baseweb="notification"][kind="negative"] {
+  border-left-color: var(--pc-bad) !important;
+}
+[data-testid="stAlert"] [data-baseweb="notification"][kind="info"] {
+  border-left-color: var(--pc-blue) !important;
+}
+[data-testid="stAlert"] [data-baseweb="notification"][kind="warning"] {
+  border-left-color: var(--pc-amber) !important;
+}
+
+/* ========== Section headers (custom HTML) ========== */
+.pc-section-header {
+  margin-bottom: 1.25rem;
+}
+.pc-section-title {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: var(--pc-text) !important;
+  margin: 0 0 0.25rem 0 !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+  letter-spacing: -0.02em;
+}
+.pc-section-icon {
+  opacity: 0.95;
+}
+.pc-section-caption {
+  color: var(--pc-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ========== Info cards (next steps, how it works) ========== */
+.pc-info-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid var(--pc-border);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transition: border-color var(--pc-transition), box-shadow var(--pc-transition);
+}
+.pc-info-card:hover {
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+}
+.pc-info-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pc-blue-light);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.pc-info-card-blue { border-left: 4px solid var(--pc-blue); }
+.pc-info-card-green { border-left: 4px solid var(--pc-green); }
+.pc-info-card-pink { border-left: 4px solid var(--pc-pink); }
+.pc-info-card-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--pc-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+.pc-info-card-list li {
+  margin-bottom: 0.35rem;
+}
+
+/* ========== Main content area ========== */
+.block-container {
+  padding-top: 1rem !important;
+  padding-bottom: 3rem !important;
+  max-width: 1400px;
+}
+
+/* ========== Sub-headings (h4) ========== */
+.main h4 {
+  color: var(--pc-muted) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* ========== Paragraphs and lists ========== */
+.main p {
+  color: var(--pc-muted);
+  line-height: 1.6;
+}
+.main ul {
+  color: var(--pc-muted);
+  padding-left: 1.5rem;
+  line-height: 1.7;
+}
+
+/* ========== Form containers ========== */
+[data-testid="stForm"] {
+  border: 1px solid var(--pc-border);
+  border-radius: 16px;
+  padding: 1.5rem !important;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ========== File uploader ========== */
+[data-testid="stFileUploader"] {
+  border: 1px dashed rgba(59, 130, 246, 0.4);
+  border-radius: 14px;
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.05);
+  transition: border-color var(--pc-transition), background var(--pc-transition);
+}
+[data-testid="stFileUploader"]:hover {
+  border-color: var(--pc-blue);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+/* ========== Plotly charts ========== */
+.js-plotly-plot,
+[data-testid="stPlotlyChart"] {
+  border-radius: 14px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--pc-border);
+}
+
+/* ========== Code blocks ========== */
+.main code {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--pc-blue-light);
+  padding: 0.2em 0.45em;
+  border-radius: 6px;
+  font-size: 0.88em;
+}
+.main pre {
+  border-radius: 12px;
+  border: 1px solid var(--pc-border);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Fix for the white horizontal line at the top */
+[data-testid="stToolbar"] {
+  display: none !important;
+}
+footer {
+  visibility: hidden;
+}
+
+/* ========== Footer ========== */
+.pc-footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--pc-border);
+  text-align: center;
+  color: var(--pc-faint);
+  font-size: 0.8rem;
+}
+.pc-footer-dot {
+  margin: 0 0.5rem;
+  opacity: 0.6;
+}
+
+/* ========== Credit score highlight ========== */
+.pc-score-box {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(16, 185, 129, 0.15) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--pc-text);
+  margin: 0.25rem 0;
+}
